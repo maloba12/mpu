@@ -1,0 +1,43 @@
+# PHP
+*.log
+*.php~
+*.php.bak
+*.php.swp
+*.php.swo
+
+# Database
+*.sql~
+*.sql.bak
+*.sql.swp
+*.sql.swo
+
+# WAMP specific
+wampmanager.conf
+wampmanager.conf~
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE specific
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Build files
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Cache
+*.cache
+*.tmp
