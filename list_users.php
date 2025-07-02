@@ -1,4 +1,4 @@
-// ===== list_users.php =====
+
 <?php
 session_start();
 require_once 'db_connect.php';
@@ -91,12 +91,28 @@ try {
                                         <td><?php echo htmlspecialchars($user['email']); ?></td>
                                         <td><?php echo htmlspecialchars($user['phone'] ?: 'N/A'); ?></td>
                                         <td>
-                                            <div class="status-container">
-                                                <span class="status-badge <?php echo htmlspecialchars($user['status'] ?? 'active'); ?>">
-                                                    <?php echo ucfirst($user['status'] ?? 'active'); ?>
+                                             <div class="status-container">
+                                                <span class="status-badge <?php 
+                                                    echo isset($user['status']) && in_array($user['status'], ['active', 'inactive']) 
+                                                        ? $user['status'] 
+                                                        : 'active';
+                                                ?>">
+                                                    <?php 
+                                                    echo isset($user['status']) && in_array($user['status'], ['active', 'inactive']) 
+                                                        ? ucfirst($user['status']) 
+                                                        : 'Active';
+                                                    ?>
                                                 </span>
-                                                <button class="status-toggle-btn" onclick="toggleStatus(<?php echo $user['id']; ?>, '<?php echo $user['status']; ?>')">
-                                                    <i class="fas fa-toggle-<?php echo $user['status'] === 'active' ? 'on' : 'off'; ?>"></i>
+                                                <button class="status-toggle-btn" onclick="toggleStatus(<?php echo $user['id']; ?>, '<?php 
+                                                    echo isset($user['status']) && in_array($user['status'], ['active', 'inactive']) 
+                                                        ? $user['status'] 
+                                                        : 'active';
+                                                ?>')">
+                                                    <i class="fas fa-toggle-<?php 
+                                                        echo isset($user['status']) && in_array($user['status'], ['active', 'inactive']) 
+                                                            ? ($user['status'] === 'active' ? 'on' : 'off') 
+                                                            : 'on';
+                                                    ?>"></i>
                                                 </button>
                                             </div>
                                         </td>
